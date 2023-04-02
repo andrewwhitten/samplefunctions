@@ -6,15 +6,20 @@ using Microsoft.Extensions.Logging;
 
 namespace andrewwhitten.samples
 {
+    /// <summary>
+    /// Class <c>WebServiceResult</c> will model the result
+    /// </summary>
     public class WebServiceResult
     {
         public DateTime Date { get; set; }
         public bool Success { get; set; }
         public string? Summary { get; set; }
-
         public int Score { get; set; }
     }
 
+    /// <summary>
+    /// Class <c>UnreliableEnterpriseService</c> will random return any kind of result
+    /// </summary>
     public class UnreliableEnterpriseService
     {
         private readonly ILogger _logger;
@@ -78,8 +83,6 @@ namespace andrewwhitten.samples
                 result.Summary = "Operation forbidden";
 
             } 
-
-
 
             HttpResponseData responseValue = req.CreateResponse(code);
             responseValue.Headers.Add("Content-Type", "application/json; charset=utf-8");

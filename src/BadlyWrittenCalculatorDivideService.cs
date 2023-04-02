@@ -6,22 +6,28 @@ using Microsoft.Extensions.Logging;
 
 namespace andrewwhitten.samples
 {
+    /// <summary>
+    /// Class <c>BadlyWrittenCalculatorServiceResult</c> will model the calculation result
+    /// </summary>
     public class BadlyWrittenCalculatorServiceResult
     {
         public DateTime Date { get; set; }
         public bool Success { get; set; }
         public string? Summary { get; set; }
-
         public int Result { get; set; }
     }
 
+    /// <summary>
+    /// Class <c>BadlyWrittenCalculatorDivideService</c> will divide two numbers
+    /// and not check the inputs for zero values
+    /// </summary>
     public class BadlyWrittenCalculatorDivideService
     {
         private readonly ILogger _logger;
 
         public BadlyWrittenCalculatorDivideService(ILoggerFactory loggerFactory)
         {
-            _logger = loggerFactory.CreateLogger<BadlyWrittenCalculatorService>();
+            _logger = loggerFactory.CreateLogger<BadlyWrittenCalculatorDivideService>();
         }
 
         [Function("BadlyWrittenCalculatorDivideService")]
@@ -61,6 +67,7 @@ namespace andrewwhitten.samples
                 bool success = true;
                 string summary = String.Empty;
                 
+                // Divide the values by each other, and if the second value is 0 then so be it....
                 int score = p1/p2;
 
                 result = new BadlyWrittenCalculatorServiceResult
